@@ -167,7 +167,7 @@ def generate_augmented_data(filepath, num_epochs):
             item_json["epoch_num"] = epoch
 
         # augmented_data += odatas
-        print(len(odatas))
+        # print(len(odatas))
 
         ofile = open(output_dirpath + "train_epoch" + str(epoch) + ".jsonl", "w")
         for data in odatas:

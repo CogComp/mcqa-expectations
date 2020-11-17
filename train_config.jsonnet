@@ -24,17 +24,28 @@ local shuffle_dataset = if mode == "baseline" then false else true;
 local gpu = if std.extVar("GPU") == "-1" then -1 else 0;
 
 // Training mode/dataset related parameters
-local augmentation_since_epoch = if mode == "proposed" then 0 else -1;
+local augmentation_since_epoch = if mode == "proposed" then if dataset == "race" then 1 else 0 else -1;
 local binary_loss = if mode == "baseline" then false else true;
 local weights_model = if dataset == "race" then null else std.extVar("RACE_BASELINE_MODEL");
 
 {
+    "random_seed": if mode == "baseline" && dataset == "qasc" then 4582 else 13370,
+    "numpy_seed": if mode == "baseline" && dataset == "qasc" then 4582 else 1337,
+    "pytorch_seed": if mode == "baseline" && dataset == "qasc" then 4582 else 133,
     "dataset_reader": {
         "type": "transformer_mc_qa",
         "training": true,
         "augmentation_since_epoch": augmentation_since_epoch,
         "lazy": lazy,
         "shuffle_dataset": shuffle_dataset,
+        "num_choices": num_choices,
+        "max_pieces": max_pieces,
+        "pretrained_model": "roberta-large"
+    },
+    "validation_dataset_reader": {
+        "type": "transformer_mc_qa",
+        "training": false,
+        "shuffle_dataset": if mode == "baseline" then false else true,
         "num_choices": num_choices,
         "max_pieces": max_pieces,
         "pretrained_model": "roberta-large"
@@ -48,6 +59,14 @@ local weights_model = if dataset == "race" then null else std.extVar("RACE_BASEL
             ,
         "batch_size": 1
     },
+    "validation_data_loader": {
+        "batch_sampler": {
+            "type": "basic",
+            "sampler": {"type": "random"},
+            "batch_size": 1,
+            "drop_last": false
+        }
+    },
     "model": {
         "type": "roberta_mc_qa",
         "pretrained_model": "roberta-large",
@@ -59,7 +78,9 @@ local weights_model = if dataset == "race" then null else std.extVar("RACE_BASEL
         else datadir + "/train.jsonl"
     ,
     "validation_data_path": datadir + "/dev.jsonl",
-    "test_data_path": datadir + "/test.jsonl",
+    "test_data_path":
+        if dataset == "qasc" then datadir + "/dev.jsonl"
+        else datadir + "/test.jsonl",
     "trainer": {
         "cuda_device": gpu,
         "grad_clipping": 1,
@@ -93,7 +114,7 @@ local weights_model = if dataset == "race" then null else std.extVar("RACE_BASEL
                     }
                 ]
             ],
-            "weight_decay": 0.1
+            "weight_decay": optimizer_weight_decay
         },
         "validation_metric": "+accuracy"
     },

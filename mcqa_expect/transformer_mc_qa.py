@@ -245,7 +245,7 @@ class TransformerMCQAReader(DatasetReader):
             logger.info(f"context = {context}")
             logger.info(f"choice_context_list = {choice_context_list}")
             logger.info(f"answer_id = {answer_id}")
-            logger.info(f"binary_labels = {fields['binary_labels']}")
+            # logger.info(f"binary_labels = {fields['binary_labels']}")
 
         fields["metadata"] = MetadataField(metadata)
 

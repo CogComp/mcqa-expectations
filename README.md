@@ -4,6 +4,8 @@ This is the official repository for the Findings of EMNLP 2020 paper, "What do w
 ## Resources
 This repository uses data from the [Aristo](https://arxiv.org/abs/1909.01958), [QASC](https://arxiv.org/abs/1910.11473) (data retrieved using two-step approach) and [RACE](https://arxiv.org/abs/1704.04683) datasets. The QASC dataset can be directly downloaded from [qasc](http://data.allenai.org/downloads/qasc/qasc_dataset_2step.zip) while the RACE dataset can be obtained by filling the form at [race](https://www.cs.cmu.edu/~glai1/data/race/). Kindly contact the authors of the Aristo paper for access to their dataset.
 
+Trained models coming soon.
+
 ## Environment
 This repository is tested on Python 3.7.9. 
 
@@ -94,7 +96,6 @@ Please consider citing our work if you found it helpful to your research
     booktitle = {Findings of the Conference on Empirical Methods in Natural Language Processing (EMNLP)},
     year = {2020},
     url = "https://cogcomp.seas.upenn.edu/papers/ShahGuRo20.pdf",
-    funding = {BETTER, ONR-LtR},
 }
 ```
 
