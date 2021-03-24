@@ -2,7 +2,7 @@
 This is the official repository for the Findings of EMNLP 2020 paper, "[What do we expect from Multiple-choice QA Systems?](https://www.aclweb.org/anthology/2020.findings-emnlp.317/)".
 
 ## Resources
-This repository uses data from the [Aristo](https://arxiv.org/abs/1909.01958), [QASC](https://arxiv.org/abs/1910.11473) (data retrieved using two-step approach) and [RACE](https://arxiv.org/abs/1704.04683) datasets. The QASC dataset can be directly downloaded from [qasc](http://data.allenai.org/downloads/qasc/qasc_dataset_2step.zip) while the RACE dataset can be obtained by filling the form at [race](https://www.cs.cmu.edu/~glai1/data/race/). Kindly contact the authors of the Aristo paper for access to their dataset.
+This repository uses data from the [Aristo](https://arxiv.org/abs/1909.01958), [QASC](https://arxiv.org/abs/1910.11473) (data retrieved using two-step approach) and [RACE](https://arxiv.org/abs/1704.04683) datasets. The RACE dataset can be obtained by filling the form at [race](https://www.cs.cmu.edu/~glai1/data/race/). Kindly contact the authors of the Aristo and QASC papers for access to their datasets.
 
 Trained models coming soon.
 
